@@ -6,7 +6,7 @@ server {
     keepalive_requests 10000;
     include            /config/nginx/ssl.conf;
     include            /config/nginx/proxy.conf;
-    include            golift/*.conf
+    include            golift/*.conf;
 }
 
 proxy_cache_path cache/ keys_zone=auth_cache:10m;
