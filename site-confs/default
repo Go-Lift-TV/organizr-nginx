@@ -1,0 +1,12 @@
+# HTTPS Main Server
+server {
+    listen             443 ssl http2 default_server;
+    server_name        _;
+    keepalive_timeout  600s;
+    keepalive_requests 10000;
+    include            /config/nginx/ssl.conf;
+    include            /config/nginx/proxy.conf;
+    include            golift/*.conf
+}
+
+proxy_cache_path cache/ keys_zone=auth_cache:10m;
