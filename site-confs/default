@@ -6,7 +6,15 @@ server {
     keepalive_requests 10000;
     include            /config/nginx/ssl.conf;
     include            /config/nginx/proxy.conf;
+
+    # Bring in all the custom configs.
     include            golift/*.conf;
+}
+
+# https://github.com/jlesage/docker-crashplan-pro#routing-based-on-url-path
+map $http_upgrade $connection_upgrade {
+	default upgrade;
+	''      close;
 }
 
 proxy_cache_path cache/ keys_zone=auth_cache:10m;
