@@ -1,0 +1,5 @@
+/authelia*
+/proxy-confs
+/dhparams.pem
+/ldap.conf
+/geoip2.conf
