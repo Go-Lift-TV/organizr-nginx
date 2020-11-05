@@ -1,7 +1,7 @@
 # organizr-nginx
 
 This repo contains the custom Go Lift TV Nginx configs that reverse proxy and run
-a few dozen apps on an unRAID server with the letsencrypt and Organizr Docker
+a few dozen apps on an unRAID server with the lsio/swag and Organizr Docker
 containers.
 
 At some point a better HOWTO, video, or blog post will be created to explain how
