@@ -21,32 +21,17 @@ server {
 	# Bring in all the custom configs.
 	include            golift/*.conf;
 
-	# enable subfolder method reverse proxy confs
-	# include /config/nginx/proxy-confs/*.subfolder.conf;
-
-	# all ssl related config moved to ssl.conf
 	include /config/nginx/ssl.conf;
-
-	# enable for ldap auth
-	#include /config/nginx/ldap.conf;
-
-	# enable for Authelia
-	#include /config/nginx/authelia-server.conf;
-
 	include /config/nginx/proxy.conf;
-
-	# enable for geo blocking
-	# See /config/nginx/geoip2.conf for more information.
-	#if ($allowed_country = no) {
-	#return 444;
-	#}
 
 	client_max_body_size 0;
 
 	location @organizr {
+		# TODO: capture username header for log.
 		proxy_pass $organizr;
 	}
 
+	# Look for a local file before dumping everything else off to organizr.
 	location / {
 		try_files $uri /YOURLS$uri @organizr;
 		#proxy_pass $organizr;
