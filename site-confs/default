@@ -31,6 +31,11 @@ server {
 		more_set_headers "X-WEBAUTH-USER: $upstream_http_x_organizr_user";
 	}
 
+	location /discord {
+		expires max;
+		return 301 https://discord.gg/YrWnVzjWMC;
+	}
+
 	# Look for a local file before dumping everything else off to organizr.
 	location / {
 		error_page 401 $scheme://$http_host/?return=$request_uri;
