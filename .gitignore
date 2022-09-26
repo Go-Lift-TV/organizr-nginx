@@ -3,3 +3,4 @@
 /dhparams.pem
 /ldap.conf
 /geoip2.conf
+*.sample
