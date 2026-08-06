@@ -1,4 +1,6 @@
 /authelia*
+/authentik-*.conf
+/tinyauth-*.conf
 /proxy-confs
 /dhparams.pem
 /ldap.conf
