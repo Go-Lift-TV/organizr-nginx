@@ -6,4 +6,5 @@
 /dhparams.pem
 /ldap.conf
 /geoip2.conf
+/pki/
 *.sample
