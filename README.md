@@ -12,9 +12,12 @@ nginx with a cert that covers each name (`SUBDOMAINS=*.home,*.slvr,...`):
 
 | Name | Path | Notes |
 |------|------|-------|
-| `app.golift.tv` | Cloudflare → router :443 → SWAG | Public. Cloudflare IPs are trusted for `real_ip` (see `site-confs/00-custom.conf`). |
-| `app.home.golift.tv` | Router (direct, no Cloudflare) → SWAG | Used by mobile apps (SecuritySpy, Home Assistant). |
-| `app.slvr.golift.tv` | Private IP → SWAG | LAN only. |
+| `app.example.com` | Cloudflare → router :443 → SWAG | Public. Cloudflare IPs are trusted for `real_ip` (see `site-confs/00-custom.conf`). |
+| `app.home.example.com` | Router (direct, no Cloudflare) → SWAG | Used by mobile apps (SecuritySpy, Home Assistant). |
+| `app.slvr.example.com` | Private IP → SWAG | LAN only. |
+
+The apex domain itself is never hardcoded in these configs: it comes from the
+`$maindomain` variable defined in `secrets.conf` (see below).
 
 ## Authentication
 
@@ -37,7 +40,7 @@ Apps with their own auth and no Organizr wall: SecuritySpy on `ss.*` (mobile
 apps), Home Assistant on `ha.home.*`/`ha.slvr.*`, Gitea (public), Plex, YOURLS
 redirects on `l.*`.
 
-`ha.golift.tv` (public) is LAN-locked until the Alexa/mTLS project lands; see
+The public `ha.*` name is LAN-locked until the Alexa/mTLS project lands; see
 `site-confs/homeassistant.conf` and
 [TwitchCaptain/alexa-homeassistant](https://github.com/TwitchCaptain/alexa-homeassistant).
 
@@ -57,7 +60,8 @@ The live server copy is a git checkout. Never edit prod directly:
 | `site-confs/` | One file per vhost (`default.conf` is the main Organizr domain). |
 | `golift/` | Per-app snippets included into the main domain's server block. |
 | `auth/` | Organizr `auth_request` includes, one per group level. |
-| `golift/secrets.conf` | **Not in git.** `set` variables holding base64 basic-auth credentials. |
+| `secrets.conf` | **Not in git.** http-level deployment values (`$maindomain`). Copy `secrets.conf.example` to create it. |
+| `golift/secrets.conf` | **Not in git.** `set` variables holding base64 basic-auth credentials. Copy `golift/secrets.conf.example` to create it. |
 
 [NextCloud is gone.] [Chevereto](http://chevereto.com), [DokuWiki](http://dokuwiki.org),
 and [YOURLS](https://yourls.org) are installed directly in the SWAG container

@@ -1,3 +1,4 @@
+/secrets.conf
 /authelia*
 /authentik-*.conf
 /tinyauth-*.conf
