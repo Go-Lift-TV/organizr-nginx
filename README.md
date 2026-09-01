@@ -42,7 +42,7 @@ redirects on `l.*`.
 
 The public `ha.*` name is LAN-locked until the Alexa/mTLS project lands; see
 `site-confs/homeassistant.conf` and
-[TwitchCaptain/alexa-homeassistant](https://github.com/TwitchCaptain/alexa-homeassistant).
+[golift/alexa-homeassistant](https://github.com/golift/alexa-homeassistant).
 
 ## Change control
 
